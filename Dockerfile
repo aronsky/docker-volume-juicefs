@@ -10,7 +10,6 @@ RUN apt-get update && apt-get install -y curl musl-tools tar gzip upx-ucl git \
        --ldflags '-linkmode external -extldflags "-static"' .
 
 WORKDIR /workspace
-ENV JUICEFS_CE_VERSION=${JUICEFS_CE_VERSION:-"main"}
 RUN git clone https://github.com/aronsky/juicefs.git -b add-internal-inodes-prefix-option \
     && cd juicefs && STATIC=1 make && upx juicefs
 
